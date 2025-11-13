@@ -9,16 +9,11 @@ const options: swaggerJsdoc.Options = {
       title: "Weather Forecast API",
       version: "1.0.0",
       description:
-        "A simple API that provides the short forecast and temperature characterization (hot, cold, or moderate) for a given location using the National Weather Service API.",
+        "Provides the short forecast and temperature category (hot, cold, or moderate) for a given latitude and longitude using the National Weather Service API.",
     },
-    servers: [
-      {
-        url: "http://localhost:3000",
-        description: "Local server",
-      },
-    ],
+    servers: [{ url: "http://localhost:3000" }],
   },
-  apis: ["./src/app.ts"], // Path to the annotated source file
+  apis: ["./src/controllers/*.ts"],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
