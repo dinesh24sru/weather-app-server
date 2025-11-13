@@ -50,6 +50,13 @@ Example(Try hitting from POSTMAN)
 GET http://localhost:3000/weather?lat=39.0&lon=-77.0
 
 ```
+## Swagger docs
+After running the application you can access the swagger documentation using below URL
+
+```bash
+http://localhost:3000/docs/
+```
+
 ### Notes
 ```bash
 Uses the National Weather Service API.
