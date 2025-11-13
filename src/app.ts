@@ -10,7 +10,51 @@ function categorizeTemperature(tempF: number): "cold" | "moderate" | "hot" {
   return "moderate";
 }
 
-// Endpoint: /weather?lat=39.0&lon=-77.0
+/**
+ * @swagger
+ * /weather:
+ *   get:
+ *     summary: Get today's short forecast and temperature category
+ *     description: Returns the short weather forecast and temperature characterization (hot, cold, or moderate) for the given coordinates.
+ *     parameters:
+ *       - in: query
+ *         name: lat
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: Latitude coordinate (e.g., 39.0)
+ *       - in: query
+ *         name: lon
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: Longitude coordinate (e.g., -77.0)
+ *     responses:
+ *       200:
+ *         description: Successful response with forecast and temperature category
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 location:
+ *                   type: object
+ *                   properties:
+ *                     lat:
+ *                       type: string
+ *                     lon:
+ *                       type: string
+ *                 shortForecast:
+ *                   type: string
+ *                 temperature:
+ *                   type: string
+ *                 temperatureCategory:
+ *                   type: string
+ *       400:
+ *         description: Missing query parameters
+ *       500:
+ *         description: Server error fetching weather data
+ */
 app.get("/weather", async (req: Request, res: Response) => {
   try {
     const { lat, lon } = req.query;
